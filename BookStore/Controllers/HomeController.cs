@@ -1,4 +1,5 @@
 ﻿using BookStore.Models;
+using BookStore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,14 +14,34 @@ namespace BookStore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private IBookStoreRepository repo;
+
+        public HomeController(IBookStoreRepository temp)
         {
-            _logger = logger;
+            repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNum = 1)
         {
-            return View();
+            int pageSize = 10;
+
+            var x = new BooksViewModel
+            {
+                Books = repo.Books
+                    .OrderBy(p => p.Title)
+                    .Skip(pageSize * (pageNum - 1))
+                    .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumBooks = repo.Books.Count(),
+                    BooksPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+
+
+            return View(x);
         }
 
         public IActionResult Privacy()
