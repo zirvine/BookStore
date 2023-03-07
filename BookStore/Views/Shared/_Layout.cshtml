@@ -4,17 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BookStore</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <div class="bg-dark text-white p-2">
-        <span class="navbar-brand ml-2">BOOK STORE</span>
+<body class="bg-light"> @*I put in the bg-light here too*@
+    <div class="text-white p-2 bg-dark">
+        <span class="navbar-brand ml-2"><i>The Book Store</i></span>
     </div>
     <div class="row m-1 p-1">
+
         <div id="categories" class="col-3">
-            Put something useful here later
+            <vc:categories></vc:categories>
         </div>
+
         <div class="col-9">
             @RenderBody()
         </div>
