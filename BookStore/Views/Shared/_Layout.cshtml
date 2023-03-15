@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BookStore</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body class="bg-light"> @*I put in the bg-light here too*@
-    <div class="text-white p-2 bg-dark">
-        <span class="navbar-brand ml-2"><i>The Book Store</i></span>
+<body> @*I put in the bg-light here too*@
+    <div class="bg-dark text-white p-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand"><i>The Book Store</i></div>
+                <div class="col-6 text-right">
+                    <vc:basket-summary />
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row m-1 p-1">
 
